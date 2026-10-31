@@ -18,10 +18,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+
       - name: Extract project
         run: |
           unzip -o ClayyID-Android-Source.zip -d .
           test -f ClayyID-Android/app/build.gradle
+          sed -i 's/android:gravity="fitCenter"/android:gravity="center"/g' ClayyID-Android/app/src/main/res/drawable/splash_background.xml
 
       - name: Setup Java
         uses: actions/setup-java@v4
